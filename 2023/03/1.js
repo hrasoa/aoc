@@ -33,20 +33,26 @@ const result = Array.from(input.matchAll(/[0-9]+/gm)).reduce((acc, m) => {
   const carret = getCarret(index, numLength);
   const carretPrev = getCarret(index - rowLength, numLength);
   const carretNext = getCarret(index + rowLength, numLength);
-  const part = symbolsIndexes.some((i) => {
-    return (
-      i === carret[0] ||
-      i === carret[1] ||
-      (!!carretNext &&
-        (i === carretNext[0] ||
-          i === carretNext[1] ||
-          (i > carretNext[0] && i < carretNext[1]))) ||
-      (!!carretPrev &&
-        (i === carretPrev[0] ||
-          i === carretPrev[1] ||
-          (i > carretPrev[0] && i < carretPrev[1])))
-    );
-  });
+  const part = symbolsIndexes
+    .filter(
+      (sIndex) =>
+        sIndex >= index - rowLength - 1 &&
+        sIndex <= index + numLength + rowLength
+    )
+    .some((i) => {
+      return (
+        i === carret[0] ||
+        i === carret[1] ||
+        (!!carretNext &&
+          (i === carretNext[0] ||
+            i === carretNext[1] ||
+            (i > carretNext[0] && i < carretNext[1]))) ||
+        (!!carretPrev &&
+          (i === carretPrev[0] ||
+            i === carretPrev[1] ||
+            (i > carretPrev[0] && i < carretPrev[1])))
+      );
+    });
   // if (part) {
   //  const repl = `<span style="color: red">${num}</span>`;
   //  debug = replaceAt(debug, m.index + ii, repl, num.length);
