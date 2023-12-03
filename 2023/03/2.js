@@ -25,7 +25,7 @@ function getCarret(numIndex, numLength) {
 
 const gears = {};
 
-Array.from(input.matchAll(/[0-9]+/gm)).reduce((acc, m) => {
+Array.from(input.matchAll(/[0-9]+/gm)).forEach((m) => {
   const num = m[0];
   const index = m.index - eoflines.filter((i) => i <= m.index).length;
 
@@ -33,7 +33,7 @@ Array.from(input.matchAll(/[0-9]+/gm)).reduce((acc, m) => {
   const carret = getCarret(index, numLength);
   const carretPrev = getCarret(index - rowLength, numLength);
   const carretNext = getCarret(index + rowLength, numLength);
-  const part = symbolsIndexes.some((i) => {
+  symbolsIndexes.some((i) => {
     const isPart =
       i === carret[0] ||
       i === carret[1] ||
@@ -51,8 +51,7 @@ Array.from(input.matchAll(/[0-9]+/gm)).reduce((acc, m) => {
     }
     return isPart;
   });
-  return acc + (part ? parseInt(num, 10) : 0);
-}, 0);
+});
 
 const result = Object.values(gears).reduce((acc, values) => {
   if (values.length === 2) {
