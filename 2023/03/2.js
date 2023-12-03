@@ -33,7 +33,7 @@ Array.from(input.matchAll(/[0-9]+/gm)).forEach((m) => {
   const carret = getCarret(index, numLength);
   const carretPrev = getCarret(index - rowLength, numLength);
   const carretNext = getCarret(index + rowLength, numLength);
-  symbolsIndexes.some((i) => {
+  symbolsIndexes.forEach((i) => {
     const isPart =
       i === carret[0] ||
       i === carret[1] ||
@@ -49,7 +49,6 @@ Array.from(input.matchAll(/[0-9]+/gm)).forEach((m) => {
       gears[i] = gears[i] || [];
       gears[i].push(num);
     }
-    return isPart;
   });
 });
 
