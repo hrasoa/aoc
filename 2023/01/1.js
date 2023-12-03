@@ -1,7 +1,7 @@
-const fs = require('fs');
+const fs = require("fs");
 
-const input = fs.readFileSync('./input', 'utf-8');
-const lines = input.trim().split('\n');
+const input = fs.readFileSync("./input1", "utf-8");
+const lines = input.trim().split("\n");
 
 const regex = /[0-9]+/g;
 

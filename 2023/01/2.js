@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const inputContent = fs.readFileSync("./input", "utf-8");
+const inputContent = fs.readFileSync("./input2", "utf-8");
 
 // https://mtsknn.fi/blog/how-to-do-overlapping-matches-with-regular-expressions/
 const regex = /(?=(one|two|three|four|five|six|seven|eight|nine))/gm;
