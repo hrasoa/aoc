@@ -56,7 +56,7 @@ Array.from(input.matchAll(/[0-9]+/gm)).reduce((acc, m) => {
 
 const result = Object.values(gears).reduce((acc, values) => {
   if (values.length === 2) {
-    return acc + parseInt(values[0]) * parseInt(values[1]);
+    return acc + parseInt(values[0], 10) * parseInt(values[1], 10);
   }
   return acc;
 }, 0);
